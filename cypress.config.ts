@@ -18,6 +18,7 @@ export default defineConfig({
     overwrite: false,
     saveJson: true,
     saveHtml: false,
+    timestamp: true
   },
   e2e: {
     setupNodeEvents(on, config) {
