@@ -6,7 +6,7 @@
   "scripts": {
     "format-changed-only": "prettier --write $(git ls-files '*.ts' --modified --other --exclude-standard | xargs)",
     "mergeJsonFiles": "mochawesome-merge cypress/reports/html/*json > cypress/reports/newReport.json",
-    "generateReportFromJson": "marge cypress/reports/newReport.json --reportDir cypress/reports --assertDir cypress/reports/html/assets --reportPageTitle index.html"
+    "generateReportFromJson": "marge cypress/reports/newReport.json --reportDir cypress/reports --assertDir cypress/reports/html/assets"
   },
   "keywords": [],
   "author": "",

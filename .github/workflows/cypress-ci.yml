@@ -50,7 +50,7 @@ jobs:
       - name: Download a Build Artifact
         uses: actions/download-artifact@v3.0.1
         with:
-          name: cypress-reports
+          name: cypress-reports 
           path: cypress/reports
       - name: generate-reports
         run: |
