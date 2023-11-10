@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "format-changed-only": "prettier --write $(git ls-files '*.ts' --modified --other --exclude-standard | xargs)"
+    "format-changed-only": "prettier --write $(git ls-files '*.ts' --modified --other --exclude-standard | xargs)",
+    "mergeJsonFiles": "mochawesome-merge cypress/reports/html/*json > cypress/reports/newReport.json",
+    "generateReportFromJson": "marge cypress/reports/newReport.json --reportDir cypress/reports --assertDir cypress/reports/html/assets --reportPageTitle index.html"
   },
   "keywords": [],
   "author": "",
@@ -15,10 +17,12 @@
     "cypress-if": "^1.10.5",
     "cypress-mochawesome-reporter": "^3.6.1",
     "cypress-recurse": "^1.35.2",
+    "mochawesome-merge": "^4.3.0",
     "prettier": "^3.0.3",
     "typescript": "^5.2.2"
   },
   "dependencies": {
+    "mochawesome-report-generator": "^6.2.0",
     "ts-node": "^10.9.1"
   }
 }
