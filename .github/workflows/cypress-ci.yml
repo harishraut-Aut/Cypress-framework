@@ -20,11 +20,7 @@ jobs:
         # each container will run 1 file
         # thats why command is hardcoded with 2
         # in order for the logic to work no of conatainer value should be same as the hardcoded value i.e.2 here
-        run: |
-          npx cypress run --spec $(node devOps/run-parallel.ts ${{ matrix.containers }} 2) --browser chrome    
-        # npm run mergeJsonFiles
-        # npm run generateReportFromJson
-
+        run: npx cypress run --spec $(node devOps/run-parallel.ts ${{ matrix.containers }} 2) --browser chrome
       - uses: actions/upload-artifact@v3
         if: failure()
         with:
@@ -35,6 +31,31 @@ jobs:
         with:
           name: cypress-videos
           path: cypress/videos
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: cypress-reports
+          path: cypress/reports
+
+  job2:
+    name: generate-reports
+    if: always()
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v3
+      - name: Install all packages
+        run: npm install
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v3.0.1
+        with:
+          name: cypress-reports
+          path: cypress/reports
+      - name: generate-reports
+        run: |
+          npm run mergeJsonFiles
+          npm run generateReportFromJson
       - uses: actions/upload-artifact@v3
         if: always()
         with:
