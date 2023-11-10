@@ -13,8 +13,10 @@ export default defineConfig({
   trashAssetsBeforeRuns: true,
   downloadsFolder: "cypress/testdownloads",
   experimentalWebKitSupport: true,
+  reporter: 'cypress-mochawesome-reporter',
   e2e: {
     setupNodeEvents(on, config) {
+      require('cypress-mochawesome-reporter/plugin')(on);
       return require("./cypress/plugins/index.ts")(on, config);
     },
     specPattern: "**/*.spec.ts",
