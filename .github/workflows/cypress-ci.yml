@@ -20,10 +20,8 @@ jobs:
         # each container will run 1 file
         # thats why command is hardcoded with 2
         # in order for the logic to work no of conatainer value should be same as the hardcoded value i.e.2 here
-        continue-on-error: true
         run: |
-          npx cypress run --spec $(node devOps/run-parallel.ts ${{ matrix.containers }} 2) --browser chrome 
-          
+          npx cypress run --spec $(node devOps/run-parallel.ts ${{ matrix.containers }} 2) --browser chrome    
         # npm run mergeJsonFiles
         # npm run generateReportFromJson
 
