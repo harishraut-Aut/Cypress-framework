@@ -1,0 +1,23 @@
+{
+  "name": "cypress-framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "format-changed-only": "prettier --write $(git ls-files '*.ts' --modified --other --exclude-standard | xargs)"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.4.0",
+    "cypress-each": "^1.13.3",
+    "cypress-if": "^1.10.5",
+    "cypress-recurse": "^1.35.2",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "ts-node": "^10.9.1"
+  }
+}

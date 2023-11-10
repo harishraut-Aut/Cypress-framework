@@ -1,0 +1,33 @@
+name: Cypress Automation Tests
+on: [push]
+jobs:
+  job1:
+    name: cypress-run
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [0, 1]
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v3
+      - name: Install all packages
+        run: npm install
+      - name: Run tests parallelly
+        # if we have 4 files inside scripts and containers are 2
+        # each container will execute 2 files
+        # here we have 2 files and 2 conatainers
+        # each container will run 1 file
+        # thats why command is hardcoded with 2
+        # in order for the logic to work no of conatainer value should be same as the hardcoded value i.e.2 here
+        run: npx cypress run --spec $(node devOps/run-parallel.ts ${{ matrix.containers }} 2) --browser chrome
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: cypress-videos
+          path: cypress/videos
