@@ -1,5 +1,7 @@
-**A ready to use Cypress Framework with Github-actions integrations**
 [![Cypress Automation Tests](https://github.com/harishraut-Aut/Cypress-framework/actions/workflows/cypress-ci.yml/badge.svg)](https://github.com/harishraut-Aut/Cypress-framework/actions/workflows/cypress-ci.yml)
+
+**A ready to use Cypress Framework with Github-actions integrations**
+
 # Features :
 
 * Created using Typescript
